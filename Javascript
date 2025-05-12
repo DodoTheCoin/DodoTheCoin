@@ -1,0 +1,14 @@
+// Solana Wallet Connection
+document.getElementById('connectWallet').addEventListener('click', async () => {
+    if (window.solana && window.solana.isPhantom) {
+        try {
+            const response = await window.solana.connect();
+            const publicKey = response.publicKey.toString();
+            alert(`Connected: ${publicKey}`);
+        } catch (err) {
+            console.error("Connection error:", err);
+        }
+    } else {
+        alert("Phantom Wallet not installed! Download: https://phantom.app/");
+    }
+});
